@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">Login Example</string>
+  <string name="loading">Cargando…</string>
+  <string name="login_email">Email</string>
+  <string name="login_password">Contraseña</string>
+  <string name="login_button">Iniciar Sesión</string>
 </resources>
