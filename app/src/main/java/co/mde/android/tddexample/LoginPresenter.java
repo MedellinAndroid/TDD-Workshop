@@ -17,6 +17,10 @@ public class LoginPresenter {
         view.showLogin();
         view.showLoginError();
       }
+
+      @Override public void onSuccess() {
+        view.showHomeScreen();
+      }
     });
   }
 }
