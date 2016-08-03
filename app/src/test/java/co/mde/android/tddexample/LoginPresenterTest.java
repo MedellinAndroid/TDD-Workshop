@@ -18,7 +18,7 @@ public class LoginPresenterTest {
 
   @Test public void showLoadingOnClick() throws Exception {
     //Given
-    LoginPresenter presenter = new LoginPresenterTest(view, interactor);
+    LoginPresenter presenter = new LoginPresenter(view, interactor);
     Mockito.when(view.username()).thenReturn("registered@example.com");
     Mockito.when(view.password()).thenReturn("valid");
     //When
