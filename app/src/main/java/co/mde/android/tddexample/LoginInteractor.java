@@ -5,5 +5,7 @@ public interface LoginInteractor {
 
   interface Callback {
     void onFailure();
+
+    void onSuccess();
   }
 }
