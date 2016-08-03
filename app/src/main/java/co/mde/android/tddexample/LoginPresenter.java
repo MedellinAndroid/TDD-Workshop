@@ -10,6 +10,6 @@ public class LoginPresenter {
   }
 
   public void login() {
-
+    view.showLoading();
   }
 }
