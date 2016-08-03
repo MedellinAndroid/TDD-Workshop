@@ -6,4 +6,10 @@ public interface LoginView {
   String password();
 
   void showLoading();
+
+  void showLogin();
+
+  void hideLoading();
+
+  void showLoginError();
 }

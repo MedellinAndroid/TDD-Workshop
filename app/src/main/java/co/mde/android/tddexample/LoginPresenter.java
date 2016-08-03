@@ -11,5 +11,12 @@ public class LoginPresenter {
 
   public void login() {
     view.showLoading();
+    interactor.auth(view.username(), view.password(), new LoginInteractor.Callback() {
+      @Override public void onFailure() {
+        view.hideLoading();
+        view.showLogin();
+        view.showLoginError();
+      }
+    });
   }
 }
