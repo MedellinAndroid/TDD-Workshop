@@ -5,8 +5,11 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class LoginPresenterTest {
 
@@ -15,35 +18,35 @@ public class LoginPresenterTest {
   @Mock LoginInteractor interactor;
   @Captor ArgumentCaptor<LoginInteractor.Callback> captor;
 
+  private LoginPresenter presenter;
+
   @Before public void setup() {
     MockitoAnnotations.initMocks(this);
+    presenter = new LoginPresenter(view, interactor);
   }
 
   @Test public void showLoadingOnClick() throws Exception {
     //Given
-    LoginPresenter presenter = new LoginPresenter(view, interactor);
-    Mockito.when(view.username()).thenReturn("registered@example.com");
-    Mockito.when(view.password()).thenReturn("valid");
+    when(view.username()).thenReturn("registered@example.com");
+    when(view.password()).thenReturn("valid");
     //When
     presenter.login();
     //Then
-    Mockito.verify(view).showLoading();
+    verify(view).showLoading();
   }
 
   @Test public void showLoginScreenAndErrorOnInteractorFailure() {
     //Given
-    LoginPresenter presenter = new LoginPresenter(view, interactor);
-    Mockito.when(view.username()).thenReturn("non-registered@example.com");
-    Mockito.when(view.password()).thenReturn("invalid");
+    when(view.username()).thenReturn("non-registered@example.com");
+    when(view.password()).thenReturn("invalid");
     //When
     presenter.login();
-    Mockito.verify(interactor)
-        .auth(Mockito.eq("non-registered@example.com"), Mockito.eq("invalid"), captor.capture());
+    verify(interactor).auth(eq("non-registered@example.com"), eq("invalid"), captor.capture());
     captor.getValue().onFailure();
 
     //Then
-    Mockito.verify(view).showLogin();
-    Mockito.verify(view).hideLoading();
-    Mockito.verify(view).showLoginError();
+    verify(view).showLogin();
+    verify(view).hideLoading();
+    verify(view).showLoginError();
   }
 }
