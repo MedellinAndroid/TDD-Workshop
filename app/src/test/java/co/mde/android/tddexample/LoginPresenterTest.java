@@ -49,4 +49,17 @@ public class LoginPresenterTest {
     verify(view).hideLoading();
     verify(view).showLoginError();
   }
+
+  @Test public void showHomeScreenOnInteractorSuccess() {
+    //Given
+    when(view.username()).thenReturn("registered@example.com");
+    when(view.password()).thenReturn("valid");
+    //When
+    presenter.login();
+    verify(interactor).auth(eq("registered@example.com"), eq("valid"), captor.capture());
+    captor.getValue().onSuccess();
+
+    //Then
+    verify(view).showHomeScreen();
+  }
 }
