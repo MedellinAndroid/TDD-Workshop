@@ -19,3 +19,8 @@ pantalla de carga
 ### Paso 4
 * Se debe integrar el activity con el presentador
 * Crear un caso de uso de ejemplo, funcionara de manera local
+
+### Paso 5
+* Test para el interactor usando mockwebserver
+* el interactor usara retrofit
+* conectar el nuevo interactor
