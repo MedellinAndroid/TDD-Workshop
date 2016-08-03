@@ -1,5 +1,8 @@
 package co.mde.android.tddexample;
 
+import co.mde.android.tddexample.login.LoginInteractor;
+import co.mde.android.tddexample.login.LoginPresenter;
+import co.mde.android.tddexample.login.LoginView;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -8,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -25,6 +29,11 @@ public class LoginPresenterTest {
     presenter = new LoginPresenter(view, interactor);
   }
 
+  @Test public void noActionsShowsLogin() {
+    verify(view).showLogin();
+    verify(view).hideLoading();
+  }
+
   @Test public void showLoadingOnClick() throws Exception {
     //Given
     when(view.username()).thenReturn("registered@example.com");
@@ -33,6 +42,7 @@ public class LoginPresenterTest {
     presenter.login();
     //Then
     verify(view).showLoading();
+    verify(view).hideLogin();
   }
 
   @Test public void showLoginScreenAndErrorOnInteractorFailure() {
@@ -45,8 +55,8 @@ public class LoginPresenterTest {
     captor.getValue().onFailure();
 
     //Then
-    verify(view).showLogin();
-    verify(view).hideLoading();
+    verify(view, times(2)).showLogin();
+    verify(view, times(2)).hideLoading();
     verify(view).showLoginError();
   }
 

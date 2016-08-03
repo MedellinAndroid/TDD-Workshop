@@ -4,4 +4,6 @@
   <string name="login_email">Email</string>
   <string name="login_password">Contraseña</string>
   <string name="login_button">Iniciar Sesión</string>
+  <string name="login_error">Error al autenticarse</string>
+  <string name="home_text">Este es el home</string>
 </resources>

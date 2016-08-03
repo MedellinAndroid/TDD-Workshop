@@ -12,3 +12,10 @@ pantalla de carga
 ### Paso 2
 * Escribir el test en el cual el presentador chequea la interaccion con el caso de uso y este falla
 * Se usan los ArgumentCaptors para simular los llamados de los colaboradores
+
+### Paso 3
+* Escribir el test en el cual el presentador chequea la interaccion con el caso de uso y este es correcto
+
+### Paso 4
+* Se debe integrar el activity con el presentador
+* Crear un caso de uso de ejemplo, funcionara de manera local
