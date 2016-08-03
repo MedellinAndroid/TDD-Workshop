@@ -25,7 +25,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
     ButterKnife.bind(this);
-    presenter = new LoginPresenter(this, new MockLoginInteractor());
+    presenter =
+        new LoginPresenter(this, new RetrofitLoginInteractor("http://demo4642209.mockable.io/"));
   }
 
   @OnClick(R.id.login_button) public void login() {
